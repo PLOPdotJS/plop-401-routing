@@ -34,3 +34,15 @@ describe('name your test', () => {
       });
   });
 });
+
+describe('name your test', () => {
+  it ('should catch not found', (done)=>{
+    request('localhost:3000')
+    .get('/notthere')
+    .end((err, res) => {
+      expect(res).to.have.status(404);
+      expect(res.text).to.eql('page not found');
+      done();
+    });
+  });
+});
